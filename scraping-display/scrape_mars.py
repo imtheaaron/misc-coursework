@@ -94,8 +94,8 @@ def scrape_mars():
     mars_dict['featured_image'] = featured_image_url
 
 #----------------------------------
-    print(mars_dict)
+    # print(mars_dict)
     return mars_dict
     browser.quit()
 
-scrape_mars()
+# scrape_mars()
