@@ -1,3 +1,6 @@
+* Scraping Mars
+
+![web display image]('https://github.com/imtheaaron/misc-coursework/blob/master/scraping-display/web_output.jpg')
 
 
 ```python
