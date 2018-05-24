@@ -2,7 +2,7 @@
 
 Here an image from the output to the web site built from scraped elements.
 
-![web display image]('web_output.jpg')
+![web display image](web_output.jpg)
 
 ## Below is the code used in the Jupyter Notebook to test and then build the final python script
 
