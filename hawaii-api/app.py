@@ -30,8 +30,8 @@ def welcome():
         f"<ul><li>View the amount of rain in the past year: /api/v1.0/precipitation</li>"
         f"<li>Get a list of all weather stations: /api/v1.0/stations</li>"
         f"<li>See recorded temperatures for the past year: /api/v1.0/tobs</li>"
-        f"<li>Set a start date (YYYY-MM-DD), min, average, and max temps after that date:/api/v1.0/YYYY-MM-DD</li>"
-        f"<li>Set a start and end date (Start/End), and see the min, average, and max temps for that date range: /api/v1.0/YYYY-MM-DD/YYYY-MM-DD</li></ul>"
+        f"<li>Set a start date (YYYY-MM-DD), get min, average, and max temps after that date:/api/v1.0/YYYY-MM-DD</li>"
+        f"<li>Set a start and end date (Start/End), get the min, average, and max temps for that date range: /api/v1.0/YYYY-MM-DD/YYYY-MM-DD</li></ul>"
         f"<br><br><img src='https://www.gohawaii.com/sites/default/files/styles/narrow_carousel_large/public/content-carousel-images/Napali_0.jpg?itok=CZaVBQdQ', width='800'>"
     )
 
@@ -104,5 +104,5 @@ def temp_range(start, end):
     
     return jsonify(temps[0])
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
