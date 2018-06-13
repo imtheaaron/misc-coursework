@@ -5,17 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mars is the Best Planet!</title>
+  <title>Belly Button MicroBiome</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
   <div class='container'>
-      <!-- Need to make divs named for each of the plots. Then in JS I will build a fxn w/ plotly for each one. -->
+    <div class="jumbotron" style="text-align: center">
+        <h1>Belly Button Biodiversity</h1>
+        <p>What critters could be hiding in your belly button?...</p>
+    </div> 
+
+    <!-- Need to make divs named for each of the plots. Then in JS I will build a fxn w/ plotly for each one. --> 
+    <div class="row">
+        <div class="col-md-2">
+            <p>Select a sample</p>  
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="col-md-10">
+            <div id="pie"></div>
+        </div>
+    </div>
+    
   </div>
 
-<!-- Links to the plotly library and to our JS to build plots on this page -->
+<!-- Links to the plotly library and to our JS file to build plots on this page -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="{{ url_for('static', filename='js/bio.js') }}"></script>
 

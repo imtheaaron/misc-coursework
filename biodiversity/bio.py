@@ -5,6 +5,7 @@ import sqlalchemy
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
+import pandas as pd
 
 import numpy as np
 
@@ -45,8 +46,8 @@ def otu():
     otu_descriptions = list(otu_data.lowest_taxonomic_unit_found)
     return jsonify(otu_descriptions)
 
-@app.route('/metadata/<sample>')
-def metadata(sample):
+@app.route('/mdata/<sample>')
+def mdata(sample):
     query_id = sample[3:]
     meta_one = session.query(metadata.AGE, metadata.BBTYPE, metadata.ETHNICITY, metadata.GENDER, metadata.LOCATION, metadata.SAMPLEID).\
         filter(metadata.SAMPLEID == query_id).one()
@@ -68,9 +69,11 @@ def wfreq(sample):
 
 @app.route('/samples/<sample>')
 def samples(sample):
-    query_id = sample[3:]
-    sample_df = samples_data.sort_values(query_id, ascending=False)
+    sample_df = samples_data.sort_values(sample, ascending=False)
     sample_otus = list(sample_df.otu_id)
-    sample_values = list(sample_df[query_id])
+    sample_values = list(sample_df[sample])
     sample_dict = {'otu_ids': sample_otus, 'sample_values': sample_values}
     return jsonify(sample_dict)
+
+if __name__ == "__main__":
+    app.run(debug=True)
