@@ -1,6 +1,9 @@
 function init() {
 // function to build the first pie chart and the bubble chart w/ sample 940
-    pie_url = "samples/BB_940"
+    selector();    
+
+    // create the initial pie chart
+    pie_url = "/samples/BB_940"
     Plotly.d3.json(pie_url, function(error,response) {
         var data = response;
         console.log(data);
@@ -12,7 +15,8 @@ function init() {
         var pie_data = [{
             values: values10,
             labels: otu10,
-            type: "pie"
+            text: [],
+            type: "pie",
         }];
 
         var layout = {
@@ -21,6 +25,17 @@ function init() {
         };
 
         Plotly.plot("pie", pie_data, layout);
+
+        Plotly.d3.json("/otu", function(error,response) {
+            var descriptions = response;
+            var desc_list = [];
+            for(i=0; i<10; i++) {
+                desc = descriptions[otu10[i]+1];
+                desc_list.push(desc);
+            };
+            var PIE = document.getElementById("pie");
+            Plotly.restyle(PIE, "hovertext", [desc_list])
+        })
     })
 }
 
@@ -51,6 +66,7 @@ function optionChanged(value) {
 function update_plots(sample_id) {
     var sample_url = "/samples/" + String(sample_id);
     console.log(sample_url);
+    // update the pie chart
     Plotly.d3.json(sample_url, function(error, response) {
         var data = response;
         console.log('new response', response);
@@ -68,8 +84,18 @@ function update_plots(sample_id) {
         var PIE = document.getElementById("pie");
         Plotly.restyle(PIE, "values", [values10]);
         Plotly.restyle(PIE, "labels", [otu10]);
+
+        Plotly.d3.json("/otu", function(error,response) {
+            var descriptions = response;
+            var desc_list = [];
+            for(i=0; i<10; i++) {
+                desc = descriptions[otu10[i]+1];
+                desc_list.push(desc);
+            };
+            var PIE = document.getElementById("pie");
+            Plotly.restyle(PIE, "hovertext", [desc_list])
+        })
     })
 }
 
-selector();
 init();
