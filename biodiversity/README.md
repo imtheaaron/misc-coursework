@@ -12,3 +12,20 @@ Here an image from the output to the web site built from scraped elements.
 
 ![web display image](images/screen.jpg)
 
+Here are examples of some of the working components of the dashboard:
+
+1. Dropdown selector:
+
+![dropdown selector](images/selector.jpg)
+
+2. Pie chart hover text displaying a description of the known information for the selected microbe:
+
+![pie chart hover](images/pie-hover.jpg)
+
+3. Bubble chart hover text:
+
+![bubble chart hover](images/bubble_hover.jpg)
+
+4. Restyled pie chart and metadata for sample BB_944 showing dynamically changed metadata results and pie chart data:
+
+![dynamically changed results](images/sample_change.jpg)
