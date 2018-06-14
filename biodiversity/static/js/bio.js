@@ -151,8 +151,7 @@ function update_plots(sample_id) {
     var meta_url = "/mdata/" + String(sample_id);
     Plotly.d3.json(meta_url, function(error, response) {
         sample_meta = response;
-        Plotly.d3.select(".card-body").html("");
-        Plotly.d3.select(".card-body").append("h4").text("Sample MetaData");
+        Plotly.d3.select(".card-body").html("<h4 class='card-top-text'>Sample MetaData</h4><hr>");
         Plotly.d3.select(".card-body").append("P").text("AGE: " + sample_meta.AGE);
         Plotly.d3.select(".card-body").append("P").text("BBTYPE: " + sample_meta.BBTYPE);
         Plotly.d3.select(".card-body").append("P").text("ETHNICITY: " + sample_meta.ETHNICITY);
