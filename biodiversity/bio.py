@@ -1,13 +1,11 @@
 # Dependencies
 #------------------------
-from flask import Flask, jsonify, render_template, redirect
+from flask import Flask, jsonify, render_template
 import sqlalchemy
 from sqlalchemy.orm import Session
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
 import pandas as pd
-
-import numpy as np
 
 app = Flask(__name__)
 
