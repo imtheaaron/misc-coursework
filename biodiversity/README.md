@@ -8,7 +8,7 @@ This project built a web dashboard that displays results dynamically from the [B
 * Dropdown selector to let users choose which sample from the dataset to view
 * Plotly to build a pie and bubble chart to display the selected sample's results (microbial counts)
 
-Here an image from the output to the web site built from scraped elements.
+__Here an image from the output to the web site built from scraped elements.__
 
 ![web display image](images/screen.jpg)
 
