@@ -1,7 +1,7 @@
 // Step 1: Set up our chart
 //= ================================
 var svgWidth = 960;
-var svgHeight = 500;
+var svgHeight = 800;
 
 var margin = {
   top: 20,
@@ -29,41 +29,25 @@ var chartGroup = svg.append("g")
 // Step 3:
 // Import data from the mojoData.csv file
 // =================================
-d3.csv("/data/data.csv", function(error, healthData) {
+d3.csv("data/data.csv", function(error, healthData) {
   if (error) throw error;
+  // healthData.forEach(d => {console.log(d.stateAbbrv)});
+  // console.log(d3.max(healthData, d => parseFloat(d.diabetes)));
 
-  // Step 4: Parse the data
-  // Format the data and convert to numerical and date values
-  // =================================
-  // Create a function to parse date and time
-  var parseTime = d3.timeParse("%d-%b");
-
-  // Format the data
-  mojoData.forEach(function(data) {
-    data.date = parseTime(data.date);
-    data.morning = +data.morning;
-    data.evening = +data.evening;
-  });
-
-  // Step 5: Create Scales
   //= ============================================
-  var xTimeScale = d3.scaleTime()
-    .domain(d3.extent(mojoData, d => d.date))
+
+  var xLinearScale = d3.scaleLinear()
+    .domain([0, d3.max(healthData, d => parseFloat(d.medianIncome))])
     .range([0, width]);
 
-  var yLinearScale1 = d3.scaleLinear()
-    .domain([0, d3.max(mojoData, d => d.morning)])
-    .range([height, 0]);
-
-  var yLinearScale2 = d3.scaleLinear()
-    .domain([0, d3.max(mojoData, d => d.evening)])
+  var yLinearScale = d3.scaleLinear()
+    .domain([0, d3.max(healthData, d => parseFloat(d.diabetes))])
     .range([height, 0]);
 
   // Step 6: Create Axes
   // =============================================
-  var bottomAxis = d3.axisBottom(xTimeScale).tickFormat(d3.timeFormat("%d-%b"));
-  var leftAxis = d3.axisLeft(yLinearScale1);
-  var rightAxis = d3.axisRight(yLinearScale2);
+  var bottomAxis = d3.axisBottom(xLinearScale);
+  var leftAxis = d3.axisLeft(yLinearScale);
 
 
   // Step 7: Append the axes to the chartGroup
@@ -74,34 +58,54 @@ d3.csv("/data/data.csv", function(error, healthData) {
   // Add leftAxis to the left side of the display
   chartGroup.append("g").call(leftAxis);
 
-  // Add rightAxis to the right side of the display
-  chartGroup.append("g").attr("transform", `translate(${width}, 0)`).call(rightAxis); //Needs translate since it is all the way to the right!
 
-
-  // Step 8: Set up two line generators and append two SVG paths
+  // Step 8: Set up circle generators for all data points
   // ==============================================
   // Line generators for each line
-  var line1 = d3
-    .line()
-    .x(d => xTimeScale(d.date))
-    .y(d => yLinearScale1(d.morning));
+ 
+ 
+  // var circle = d3
+  //   .line()
+  //   .x(d => xLinearScale(d.medianIncome))
+  //   .y(d => yLinearScale(d.diabetes));
 
-  var line2 = d3
-    .line()
-    .x(d => xTimeScale(d.date))
-    .y(d => yLinearScale2(d.evening));
+  // var line2 = d3
+  //   .line()
+  //   .x(d => xTimeScale(d.date))
+  //   .y(d => yLinearScale2(d.evening));
 
+  var circlesGroup = chartGroup.selectAll("circle")
+    .data(healthData)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xLinearScale(d.medianIncome))
+    .attr("cy", d => yLinearScale(d.diabetes))
+    .attr("r", "15")
+    .style("opacity", .8)  
+    .attr("fill", "#A07A19")
+    .attr("stroke-width", "1")
+    .attr("stroke", "black");
+    
+  var circlesText = chartGroup.selectAll("text")
+    .data(healthData)
+    .enter()
+    .append("text")
+    .attr("x", d => xLinearScale(d.medianIncome)-7)
+    .attr("y", d => yLinearScale(d.diabetes)+4)
+    .style("font-size", 10)
+    .text(d => d.stateAbbrv);
 
-  // Append a path for line1
-  chartGroup.append("path")
-    .data([mojoData])
-    .attr("d", line1)
-    .classed("line green", true);
+  chartGroup.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - (height*(2/3)))
+    .attr("dy", "1em")
+    .attr("class", "axisText")
+    .text("Percent of State Population Diagnosed with Diabetes");
 
-  // Append a path for line2
-  chartGroup.append("path")
-    .data([mojoData])
-    .attr("d", line2)
-    .classed("line orange", true);
+  chartGroup.append("text")
+    .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+    .attr("class", "axisText")
+    .text("Median Houehold Income");
 
 });
