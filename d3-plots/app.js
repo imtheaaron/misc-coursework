@@ -58,51 +58,28 @@ d3.csv("data/data.csv", function(error, healthData) {
   // Add leftAxis to the left side of the display
   chartGroup.append("g").call(leftAxis);
 
+//-----------Create our circles groups and text
 
-  // Step 8: Set up circle generators for all data points
-  // ==============================================
-  // Line generators for each line
- 
- 
-  // var circle = d3
-  //   .line()
-  //   .x(d => xLinearScale(d.medianIncome))
-  //   .y(d => yLinearScale(d.diabetes));
+  // var circlesGroup = chartGroup.selectAll("circle")
+  //   .data(healthData)
+  //   .enter()
+  //   .append("circle")
+  //   .attr("cx", d => xLinearScale(d.medianIncome))
+  //   .attr("cy", d => yLinearScale(d.diabetes))
+  //   .attr("r", "15")
+  //   .style("opacity", .8)  
+  //   .attr("fill", "#A07A19")
+  //   .attr("stroke-width", "1")
+  //   .attr("stroke", "black");
 
-  // var line2 = d3
-  //   .line()
-  //   .x(d => xTimeScale(d.date))
-  //   .y(d => yLinearScale2(d.evening));
-
-  var circlesGroup = chartGroup.selectAll("circle")
-    .data(healthData)
-    .enter()
-    .append("circle")
-    .attr("cx", d => xLinearScale(d.medianIncome))
-    .attr("cy", d => yLinearScale(d.diabetes))
-    .attr("r", "15")
-    .style("opacity", .8)  
-    .attr("fill", "#A07A19")
-    .attr("stroke-width", "1")
-    .attr("stroke", "black");
-
-
-  // var states = [] 
-  
-  // healthData.forEach(state => {
-  //   states.push(state.stateAbbrv)
-  // });
-
-  // console.log(states);
-    
-  var circlesText = chartGroup.selectAll("text")
-    .data(healthData)
-    .enter()
-    .append("text")
-    .attr("x", d => xLinearScale(d.medianIncome)-7)
-    .attr("y", d => yLinearScale(d.diabetes)+4)
-    .style("font-size", 10)
-    .text(d => d.stateAbbrv);
+  // var circlesText = chartGroup.selectAll("text")
+  //   .data(healthData)
+  //   .enter()
+  //   .append("text")
+  //   .attr("x", d => xLinearScale(d.medianIncome)-7)
+  //   .attr("y", d => yLinearScale(d.diabetes)+4)
+  //   .style("font-size", 10)
+  //   .text(d => d.stateAbbrv);
 
   chartGroup.append("text")
     .attr("transform", "rotate(-90)")
@@ -118,5 +95,26 @@ d3.csv("data/data.csv", function(error, healthData) {
     .attr("class", "axisText")
     .text("Median Houehold Income")
     .style("font-weight", "bold");
+
+    //-------------------david code
+
+  var theCircles = chartGroup.selectAll("g theCircles").data(healthData).enter();
+
+  theCircles
+    .append("circle")
+    .attr("cx", d => xLinearScale(d.medianIncome))
+    .attr("cy", d => yLinearScale(d.diabetes))
+    .attr("r", "15")
+    .style("opacity", .8)  
+    .attr("fill", "#a75e5e")
+    .attr("stroke-width", "1")
+    .attr("stroke", "black");
+    
+  theCircles
+    .append("text")
+    .attr("x", d => xLinearScale(d.medianIncome)-7)
+    .attr("y", d => yLinearScale(d.diabetes)+4)
+    .style("font-size", 10)
+    .text(d => d.stateAbbrv);
 
 });
