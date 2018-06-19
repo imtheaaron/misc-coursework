@@ -1,53 +1,53 @@
-state,stateAbbrv,medianIncome,diabetes
-Alabama,AL,46257,14.63
-Alaska,AK,76440,7.45
-Arizona,AZ,53558,10.83
-Arkansas,AR,44334,13.47
-California,CA,67739,10.17
-Colorado,CO,65685,6.63
-Connecticut,CT,73433,9.8
-Delaware,DE,61757,10.63
-District of Columbia,DC,75506,7.68
-Florida,FL,50860,11.76
-Georgia,GA,53559,12.09
-Hawaii,HI,74511,10.49
-Idaho,ID,51807,8.94
-Illinois,IL,60960,10.37
-Indiana,IN,52314,11.53
-Iowa,IA,56247,9.31
-Kansas,KS,54935,9.4
-Kentucky,KY,46659,13.08
-Louisiana,LA,45146,12.13
-Maine,ME,53079,10.55
-Maryland,MD,78945,10.75
-Massachusetts,MA,75297,9.27
-Michigan,MI,52492,11.17
-Minnesota,MN,65599,8.44
-Mississippi,MS,41754,13.56
-Missouri,MO,51746,11.52
-Montana,MT,50027,8.11
-Nebraska,NE,56927,8.81
-Nevada,NV,55180,11.06
-New Hampshire,NH,70936,8.99
-New Jersey,NJ,76126,9.21
-New Mexico,NM,46748,11.6
-New York,NY,62909,10.45
-North Carolina,NC,50584,11.26
-North Dakota,ND,60656,8.64
-Ohio,OH,52334,11.12
-Oklahoma,OK,49176,11.95
-Oregon,OR,57532,9.52
-Pennsylvania,PA,56907,11.28
-Rhode Island,RI,60596,9.81
-South Carolina,SC,49501,13.02
-South Dakota,SD,54467,7.91
-Tennessee,TN,48547,12.69
-Texas,TX,56565,11.22
-Utah,UT,65977,7.24
-Vermont,VT,57677,8.4
-Virginia,VA,68114,10.44
-Washington,WA,67106,9.38
-West Virginia,WV,43385,14.96
-Wisconsin,WI,56811,9.77
-Wyoming,WY,59882,8.32
-Puerto Rico,PR,20078,15.34
+id,state,stateAbbrv,medianIncome,diabetes
+1,Alabama,AL,46257,14.63
+2,Alaska,AK,76440,7.45
+3,Arizona,AZ,53558,10.83
+4,Arkansas,AR,44334,13.47
+5,California,CA,67739,10.17
+6,Colorado,CO,65685,6.63
+7,Connecticut,CT,73433,9.8
+8,Delaware,DE,61757,10.63
+9,District of Columbia,DC,75506,7.68
+10,Florida,FL,50860,11.76
+11,Georgia,GA,53559,12.09
+12,Hawaii,HI,74511,10.49
+13,Idaho,ID,51807,8.94
+14,Illinois,IL,60960,10.37
+15,Indiana,IN,52314,11.53
+16,Iowa,IA,56247,9.31
+17,Kansas,KS,54935,9.4
+18,Kentucky,KY,46659,13.08
+19,Louisiana,LA,45146,12.13
+20,Maine,ME,53079,10.55
+21,Maryland,MD,78945,10.75
+22,Massachusetts,MA,75297,9.27
+23,Michigan,MI,52492,11.17
+24,Minnesota,MN,65599,8.44
+25,Mississippi,MS,41754,13.56
+26,Missouri,MO,51746,11.52
+27,Montana,MT,50027,8.11
+28,Nebraska,NE,56927,8.81
+29,Nevada,NV,55180,11.06
+30,New Hampshire,NH,70936,8.99
+31,New Jersey,NJ,76126,9.21
+32,New Mexico,NM,46748,11.6
+33,New York,NY,62909,10.45
+34,North Carolina,NC,50584,11.26
+35,North Dakota,ND,60656,8.64
+36,Ohio,OH,52334,11.12
+37,Oklahoma,OK,49176,11.95
+38,Oregon,OR,57532,9.52
+39,Pennsylvania,PA,56907,11.28
+40,Rhode Island,RI,60596,9.81
+41,South Carolina,SC,49501,13.02
+42,South Dakota,SD,54467,7.91
+43,Tennessee,TN,48547,12.69
+44,Texas,TX,56565,11.22
+45,Utah,UT,65977,7.24
+46,Vermont,VT,57677,8.4
+47,Virginia,VA,68114,10.44
+48,Washington,WA,67106,9.38
+49,West Virginia,WV,43385,14.96
+50,Wisconsin,WI,56811,9.77
+51,Wyoming,WY,59882,8.32
+52,Puerto Rico,PR,20078,15.34

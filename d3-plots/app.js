@@ -7,7 +7,7 @@ var margin = {
   top: 20,
   right: 40,
   bottom: 60,
-  left: 50
+  left: 100
 };
 
 var width = svgWidth - margin.left - margin.right;
@@ -37,11 +37,11 @@ d3.csv("data/data.csv", function(error, healthData) {
   //= ============================================
 
   var xLinearScale = d3.scaleLinear()
-    .domain([0, d3.max(healthData, d => parseFloat(d.medianIncome))])
+    .domain([d3.min(healthData, d => parseFloat(d.medianIncome) * 0.8), d3.max(healthData, d => parseFloat(d.medianIncome)) * 1.1])
     .range([0, width]);
 
   var yLinearScale = d3.scaleLinear()
-    .domain([0, d3.max(healthData, d => parseFloat(d.diabetes))])
+    .domain([d3.min(healthData, d => parseFloat(d.diabetes) * 0.8), d3.max(healthData, d => parseFloat(d.diabetes)) * 1.1])
     .range([height, 0]);
 
   // Step 6: Create Axes
@@ -85,6 +85,15 @@ d3.csv("data/data.csv", function(error, healthData) {
     .attr("fill", "#A07A19")
     .attr("stroke-width", "1")
     .attr("stroke", "black");
+
+
+  // var states = [] 
+  
+  // healthData.forEach(state => {
+  //   states.push(state.stateAbbrv)
+  // });
+
+  // console.log(states);
     
   var circlesText = chartGroup.selectAll("text")
     .data(healthData)
@@ -97,15 +106,17 @@ d3.csv("data/data.csv", function(error, healthData) {
 
   chartGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left/2)
     .attr("x", 0 - (height*(2/3)))
     .attr("dy", "1em")
     .attr("class", "axisText")
-    .text("Percent of State Population Diagnosed with Diabetes");
+    .text("Percent of State Population Diagnosed with Diabetes")
+    .style("font-weight", "bold");
 
   chartGroup.append("text")
     .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
     .attr("class", "axisText")
-    .text("Median Houehold Income");
+    .text("Median Houehold Income")
+    .style("font-weight", "bold");
 
 });
