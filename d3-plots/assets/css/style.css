@@ -13,12 +13,13 @@
 
 .axisText {
   font-weight: bold;
+  font: sans-serif;
 }
 
 .footerText {
   text-align: center;
 }
 
-h1 {
+/* h1 {
   text-align: center;
-}
+} */

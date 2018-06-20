@@ -83,18 +83,20 @@ d3.csv("data/data.csv", function(error, healthData) {
 
   chartGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left/2)
-    .attr("x", 0 - (height*(2/3)))
+    .attr("y", 0 - margin.left/1.5)
+    .attr("x", 0 - (height*.8))
     .attr("dy", "1em")
     .attr("class", "axisText")
     .text("Percent of State Population Diagnosed with Diabetes")
-    .style("font-weight", "bold");
+    .style("font-weight", "bold")
+    .style("font-family", "sans-serif");
 
   chartGroup.append("text")
-    .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+    .attr("transform", `translate(${width / 2.5}, ${height + margin.top + 30})`)
     .attr("class", "axisText")
     .text("Median Houehold Income")
-    .style("font-weight", "bold");
+    .style("font-weight", "bold")
+    .style("font-family", "sans-serif");
 
     //-------------------david code for getting all label data in the circles
 
