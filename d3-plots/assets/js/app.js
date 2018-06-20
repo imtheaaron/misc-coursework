@@ -96,7 +96,7 @@ d3.csv("data/data.csv", function(error, healthData) {
     .text("Median Houehold Income")
     .style("font-weight", "bold");
 
-    //-------------------david code
+    //-------------------david code for getting all label data in the circles
 
   var theCircles = chartGroup.selectAll("g theCircles").data(healthData).enter();
 
