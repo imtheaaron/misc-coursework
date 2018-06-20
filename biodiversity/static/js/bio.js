@@ -32,7 +32,9 @@ function init() {
             y: values,
             mode: "markers",
             marker: {
-                size: values
+                size: values,
+                color: otus,
+                colorscale: "Earth",
             }
         }];
 
@@ -41,6 +43,7 @@ function init() {
             showlegend: false,
             height: 500,
             width: 1000,
+            hovermode: 'closest',
         };
 
         Plotly.newPlot("bubble", bubble_data, bubble_layout);
@@ -119,7 +122,9 @@ function update_plots(sample_id) {
             y: values,
             mode: "markers",
             marker: {
-                size: values
+                size: values,
+                color: otus,
+                colorscale: "Earth",
             }
         }];
 
@@ -128,6 +133,7 @@ function update_plots(sample_id) {
             showlegend: false,
             height: 500,
             width: 1000,
+            hovermode: 'closest',
         };
 
         Plotly.newPlot("bubble", bubble_data, bubble_layout);
